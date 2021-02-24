@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-const LoginPage = () => {
+const LoginPage = ({ logged, setLogged }) => {
     const submitHandler = (e) => {
         e.preventDefault();
+       setLogged(!logged); 
     };
 
     return (

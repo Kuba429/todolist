@@ -3,17 +3,32 @@ import styled from 'styled-components';
 
 //compoents
 import LoginPage from './components/LoginPage';
+import LandingPage from './components/LandingPage';
 import GlobalStyle from './GlobalStyle';
 
 function App() {
-    const [logged, setLogged] = useState(false);
+    const [logged, setLogged] = useState(true);
 
     return (
-        <div className="App">
+        <StyledApp className="App">
             <GlobalStyle />
-            {!logged && <LoginPage />}
-        </div>
+            {
+                //if Logged
+                logged && <LandingPage />
+            }
+            {
+                //if not logged
+
+                !logged && <LoginPage logged={logged} setLogged={setLogged} />
+            }
+        </StyledApp>
     );
 }
+
+const StyledApp = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: #3b4459;
+`;
 
 export default App;
