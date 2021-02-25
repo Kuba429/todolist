@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 //components
+import AddTaskInput from './AddTaskInput';
 import TaskContainer from './TaskContainer';
 const LandingPage = () => {
     //state
     const [tasks, setTasks] = useState([{ content: 'pozdro' }]);
+    const [addingTask, setAddingTask] = useState(false);
     //functions/handlers
     const getStoredData = () => {
         console.log(localStorage.getItem('storedTasks'));
@@ -24,10 +26,23 @@ const LandingPage = () => {
     }, []);
     return (
         <StyledLandingPage>
+            {addingTask && (
+                <AddTaskInput
+                    getStoredData={getStoredData}
+                    tasks={tasks}
+                    setTasks={setTasks}
+                    addingTask={addingTask}
+                    setAddingTask={setAddingTask}
+                />
+            )}
             <div className="upperPart">
-                <h1>Add Task</h1>
+                <h1 onClick={()=>{setAddingTask(true)}}>Add Task</h1>
             </div>
-            <TaskContainer tasks={tasks} setTasks={setTasks} />
+            <TaskContainer
+                getStoredData={getStoredData}
+                tasks={tasks}
+                setTasks={setTasks}
+            />
         </StyledLandingPage>
     );
 };
