@@ -1,16 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Task = ({ content }) => {
+const Task = ({ content,tasks,setTasks }) => {
+//handlers
+const deleteTaskHandler = (e)=>{
+    const updatedTasks = tasks.filter(item=>item.content!=content)
+    setTasks(updatedTasks)
+    localStorage.setItem('storedTasks', JSON.stringify(updatedTasks))
+}
     return (
         <StyledTask>
-            <h1>
-                {content}
-           </h1>
+            <h1>{content}</h1>
 
             <div className="buttons">
-                <div className="button markDoneButton"></div>
-                <div className="button deleteTaskButton"></div>
+                <div className="button markDoneButton" ></div>
+                <div className="button deleteTaskButton" onClick={deleteTaskHandler}></div>
             </div>
         </StyledTask>
     );
@@ -27,6 +31,7 @@ const StyledTask = styled.div`
     .button {
         width: 80px;
         height: 100%;
+        transition: ease all 0.3s;
     }
     .buttons {
         display: flex;
@@ -37,17 +42,23 @@ const StyledTask = styled.div`
     }
     .markDoneButton {
         background-color: #86e886;
+
+        &:hover {
+            background-color: #65c165;
+        }
     }
     .deleteTaskButton {
         background-color: #ff7575;
+        &:hover{
+            background-color: #D22424;
+    }
     }
     h1 {
         padding: 1rem;
         padding-left: 2.5rem;
         max-height: 200px;
-        width:100%;
+        width: 100%;
         overflow-y: scroll;
-        
     }
 `;
 

@@ -10,9 +10,7 @@ const LandingPage = () => {
     const [addingTask, setAddingTask] = useState(false);
     //functions/handlers
     const getStoredData = () => {
-        console.log(localStorage.getItem('storedTasks'));
         let storedData = JSON.parse(localStorage.getItem('storedTasks'));
-        console.log(storedData);
         if (storedData != null) {
             setTasks(storedData);
         } else {
@@ -36,7 +34,13 @@ const LandingPage = () => {
                 />
             )}
             <div className="upperPart">
-                <h1 onClick={()=>{setAddingTask(true)}}>Add Task</h1>
+                <h1
+                    onClick={() => {
+                        setAddingTask(true);
+                    }}
+                >
+                    Add Task
+                </h1>
             </div>
             <TaskContainer
                 getStoredData={getStoredData}
