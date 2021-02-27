@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const AddTaskInput = ({
@@ -17,14 +17,13 @@ const AddTaskInput = ({
         };
         if (storedData) {
             storedData.push(taskTBA);
-            console.log(storedData);
             localStorage.setItem('storedTasks', JSON.stringify(storedData));
-        }else{
-        const dataToBeStored = [taskTBA];
-            localStorage.setItem('storedTasks',JSON.stringify(dataToBeStored))
+        } else {
+            const dataToBeStored = [taskTBA];
+            localStorage.setItem('storedTasks', JSON.stringify(dataToBeStored));
         }
         getStoredData();
-        setAddingTask(false)
+        setAddingTask(false);
     };
     return (
         <StyledAddTaskInput>

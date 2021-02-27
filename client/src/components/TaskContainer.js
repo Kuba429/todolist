@@ -16,6 +16,7 @@ const TaskContainer = ({ tasks, setTasks }) => {
                             tasks={tasks}
                             setTasks={setTasks}
                             content={item.content}
+                            isDone = {item.isDone}
                             key={uuidv4()}
                         />
                     );
@@ -31,7 +32,8 @@ const TaskContainer = ({ tasks, setTasks }) => {
 
 const StyledTaskContainer = styled.div`
     width: 90%;
-    height: 100%;
+    
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
