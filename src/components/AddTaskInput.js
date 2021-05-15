@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 const AddTaskInput = ({
@@ -25,6 +25,10 @@ const AddTaskInput = ({
         getStoredData();
         setAddingTask(false);
     };
+    const inputRef = useRef(null);
+    useEffect(() => {
+        inputRef.current && inputRef.current.focus();
+    }, [inputRef]);
     return (
         <StyledAddTaskInput>
             <h1 onClick={() => setAddingTask(false)} className="exit">
@@ -32,6 +36,7 @@ const AddTaskInput = ({
             </h1>
             <form onSubmit={submitTaskHandler}>
                 <input
+                    ref={inputRef}
                     className="input"
                     type="text"
                     placeholder="Enter your task here"
