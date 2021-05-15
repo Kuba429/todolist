@@ -43,7 +43,8 @@ const StyledTask = styled.div`
     background-color: #ffffff;
     border-radius: 10px;
     overflow-x: hidden;
-    margin: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 
     .button {
         width: 80px;
@@ -83,6 +84,40 @@ const StyledTask = styled.div`
     .done {
         text-decoration: line-through;
         opacity: 0.4;
+    }
+
+
+    @media (max-width: 550px){
+        h1{
+            font-size: 1.74rem;
+        }
+        .button{
+            width: 74px;
+        }
+    }
+    @media (max-width: 450px){
+        h1{
+            font-size: 1.45rem;
+        }
+        .button{
+            width: 66px;
+        }
+    }
+    @media (max-width: 400px){
+        h1{
+            font-size: 1.2rem;
+        }
+        .button{
+            width: 61px;
+        }
+    }
+    @media (max-width: 370px){
+        h1{
+            font-size: 1.1rem;
+        }
+        .button{
+            width: 56px;
+        }
     }
 `;
 
